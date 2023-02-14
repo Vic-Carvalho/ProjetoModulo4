@@ -8,7 +8,7 @@
 
 ## Como foi realizado?
 
-### Criação do Banco e Importação das Tabelas.
+### ✔️ Criação do Banco e Importação das Tabelas.
 
 <p> Primeiramente é necessário o comando para utilizar o mysql pelo shell via xampp.
 
@@ -24,7 +24,7 @@ Para alimentar as tabelas no banco de dados, foi feito da seguinte forma:
  -  ``Selecionar o banco -> ir em importar -> escolher arquivo ``
 </p>
 
-### Comandos SQL para exibição de queries:
+### ✔️ Comandos SQL para exibição de queries:
 
 Tabela 1 Pergunta 1
 
