@@ -1,0 +1,182 @@
+TABELA 1: 
+
+PERGUNTA 1 - Quantos episódios tiveram notas maiores que 8? 
+
+MariaDB [projeto_got]> select count(rating) from got_episodes_v4 where rating > 8;
+ --------------- 
+| count(rating) |
+ --------------- 
+|            66 |
+ --------------- 
+1 row in set (0.001 sec)
+
+
+
+
+PERGUNTA 2 - Quantos episódios tiveram notas abaixo de 7? 
+
+MariaDB [projeto_got]> select count(rating) from got_episodes_v4 where rating < 7;
+ --------------- 
+| count(rating) |
+ --------------- 
+|             3 |
+ --------------- 
+1 row in set (0.001 sec)
+
+
+
+
+PERGUNTA 3 - Qual o total de episódios?
+
+MariaDB [projeto_got]> select count(episode) from got_episodes_v4;
+ ---------------- 
+| count(episode) |
+ ---------------- 
+|             73 |
+ ---------------- 
+1 row in set (0.001 sec)
+
+
+
+PERGUNTA 4 - Quantos episódios George R. R. Martin escreveu na série? 
+
+
+MariaDB [projeto_got]> select season, episode, writer_1 from got_episodes_v4 where writer_1 = "george r.r. martin" limit 10;
+ -------- --------- -------------------- 
+| season | episode | writer_1           |
+ -------- --------- -------------------- 
+|      2 |       1 | George R.R. Martin |
+|      2 |       2 | George R.R. Martin |
+|      2 |       3 | George R.R. Martin |
+|      2 |       4 | George R.R. Martin |
+|      2 |       5 | George R.R. Martin |
+|      2 |       6 | George R.R. Martin |
+|      2 |       7 | George R.R. Martin |
+|      2 |       8 | George R.R. Martin |
+|      2 |       9 | George R.R. Martin |
+|      2 |      10 | George R.R. Martin |
+ -------- --------- -------------------- 
+10 rows in set (0.001 sec)
+
+
+
+TABELA 2: 
+
+PERGUNTA 1 -  Quais atores apareceram mais que 60 vezes na série?
+
+MariaDB [projeto4_got]> select * from characters_v4 where Episodes_appeared > 60;
+ -------------------- ---------------- ------------------- ------------------ ----------------- 
+| Character          | Actor/ess      | Episodes_appeared | First_appearance | Last_appearance |
+ -------------------- ---------------- ------------------- ------------------ ----------------- 
+| Tyrion Lannister   | Peter Dinklage |                67 |             2011 |            2019 |
+| Cersei Lannister   | Lena Headey    |                62 |             2011 |            2019 |
+| Daenerys Targaryen | Emilia Clarke  |                62 |             2011 |            2019 |
+| Jon Snow           | Kit Harington  |                62 |             2011 |            2019 |
+ -------------------- ---------------- ------------------- ------------------ ----------------- 
+4 rows in set (0.002 sec)
+
+PERGUNTA 2 - Quantos atores apareceram 1 vez na série?
+
+MariaDB [projeto4_got]> select count(ator) from characters_v4 where  Episodes_appeared < 2 ;
+ ------------- 
+| count(ator) |
+ ------------- 
+|         484 |
+ ------------- 
+1 row in set (0.002 sec)
+
+
+PERGUNTA 3 - Quantos atores apareceram no ano de 2012?
+
+MariaDB [projeto4_got]> select count(ator) from characters_v4 where First_appearance = 2012;
+ ------------- 
+| count(ator) |
+ ------------- 
+|         101 |
+ ------------- 
+1 row in set (0.001 sec)
+
+
+PERGUNTA 4 - Quando foi a ultima aparição do ator Peter Dinklage?
+
+
+MariaDB [projeto4_got]> select ator, Last_appearance from characters_v4 where ator = "Peter Dinklage";
+ ---------------- ----------------- 
+| ator           | Last_appearance |
+ ---------------- ----------------- 
+| Peter Dinklage |            2019 |
+ ---------------- ----------------- 
+1 row in set (0.001 sec)
+
+
+TABELA 3: 
+
+PERGUNTA 1 - Quantas regiões tem na série?
+
+MariaDB [projeto4_got]> select count(Region) from houses_v1;
+ --------------- 
+| count(Region) |
+ --------------- 
+|           471 |
+ --------------- 
+1 row in set (0.001 sec)
+
+PERGUNTA 2 - Quantas casas tem na região North? 
+
+MariaDB [projeto4_got]> select count(House_name) from houses_v1 where Region = "North";
+ ------------------- 
+| count(House_name) |
+ ------------------- 
+|                48 |
+ ------------------- 
+1 row in set (0.001 sec)
+
+
+PERGUNTA 3 - Quais casas começam com a letra a?
+
+MariaDB [projeto_got]> select * from houses_v1 where house_name like 'a%';
++-----------------------+-------------------------------+
+| House_name            | Region                        |
++-----------------------+-------------------------------+
+| Algood                | Westerlands                   |
+| Allyrion of Godsgrace | Dorne                         |
+| Amber                 | North                         |
+| Ambrose               | Reach                         |
+| Andrik of Southshield | Iron Islands (Shield Islands) |
+| Appleton of Appleton  | Reach                         |
+| Arryn of Gulltown     | Vale of Arryn                 |
+| Arryn of the Eyrie    | Vale of Arryn                 |
+| Ashford of Ashford    | Reach                         |
+| Ashwood               | North                         |
++-----------------------+-------------------------------+
+10 rows in set (0.002 sec) 
+
+
+PERGUNTA 4 -  Quais regiões terminam com a letra K? 
+
+
+MariaDB [projeto_got]> select house_name from houses_v1 where house_name like '%k';
++----------------------------+
+| house_name                 |
++----------------------------+
+| Brook                      |
+| Casterly of Casterly Rock  |
+| Drumm of Old Wyk           |
+| Goodbrook                  |
+| Hastwyck                   |
+| Hook                       |
+| Kettleblack                |
+| Lannister of Casterly Rock |
+| Leek                       |
+| Marbrand of Ashemark       |
+| Oakheart of Old Oak        |
+| Sparr of Great Wyk         |
+| Stonehouse of Old Wyk      |
+| Terrick                    |
+| Velaryon of Driftmark      |
+| Volmark of Volmark         |
+| Warrick                    |
+| Westbrook                  |
+| Yarwyck                    |
++----------------------------+
+19 rows in set (0.001 sec)
